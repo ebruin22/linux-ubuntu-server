@@ -7,22 +7,22 @@ Please visit http://18.216.230.178 for the website deployed using the steps outl
 This server uses ssh port 2200.
 
 ## Overview of Tasks ##
-[ ] Start a new Ubuntu Linux server instance in Amazon Lightsail
-[ ] Launch your new instance using the <connect using SSH> button
-[ ] Secure server by updating packages
-[ ] Configure UFW firewall and change SSH port from 22 to 2200
-[ ] Install VirtualBox and Vagrant in local machine (if not installed yet)
-[ ] Access instance via ssh in your virtual machine
-[ ] Create new user named grader and give user sudo access
-[ ] Create security key for user grader
-[ ] Change local timezone to UTC
-[ ] Install and configure Apache2 to serve python app
-[ ] Install and configure PostgreSQL 
-[ ] Create PostgreSQL user and empty database
-[ ] Install packages needed for your catalog app (see the imports in your python files)
-[ ] Clone and setup your catalog app
-[ ] Configure and enable a virtual host for the catalog app
-[ ] Create the .wsgi file
+-[ ] Start a new Ubuntu Linux server instance in Amazon Lightsail
+-[ ] Launch your new instance using the <connect using SSH> button
+-[ ] Secure server by updating packages
+-[ ] Configure UFW firewall and change SSH port from 22 to 2200
+-[ ] Install VirtualBox and Vagrant in local machine (if not installed yet)
+-[ ] Access instance via ssh in your virtual machine
+-[ ] Create new user named grader and give user sudo access
+-[ ] Create security key for user grader
+-[ ] Change local timezone to UTC
+-[ ] Install and configure Apache2 to serve python app
+-[ ] Install and configure PostgreSQL 
+-[ ] Create PostgreSQL user and empty database
+-[ ] Install packages needed for your catalog app (see the imports in your python files)
+-[ ] Clone and setup your catalog app
+-[ ] Configure and enable a virtual host for the catalog app
+-[ ] Create the .wsgi file
 
  Your're Done! 
 
@@ -95,8 +95,8 @@ Warning: You will need to download your default key first before logging into th
 		touch /etc/sudoers.d/grader
 		vim /etc/sudoers.d/grader
 ```
-			* type the following inside the file and save the file
-					```grader ALL=(ALL:ALL) ALL```
+3. type the following inside the file and save the file
+```grader ALL=(ALL:ALL) ALL```
 
 ### Create SSH Key For New User ###
 1. On local directory (not Vagrant), move to your .ssh directory using command:
@@ -217,7 +217,7 @@ You may need to use command and make changes:
 		```sudo nano /etc/apache2/sites-available/YOUR_NEW_PROJECT_NAME.conf```
 	Replace YOUR_NEW_PROJECT_NAME with the name of your project name in step 5 from "Clone and setup your catalog app"
 2. Change the bold text of YOUR_NEW_PROJECT_NAME.conf file
-			 ```
+			 ```python
 			 <VirtualHost *:80>
 			 	ServerName ***YOUR_AMAZON_AMAZON_LIGHTSAIL_IP***
 				ServerAdmin admin@***YOUR_AMAZON_AMAZON_LIGHTSAIL_IP***
@@ -247,7 +247,7 @@ You may need to use command and make changes:
 2. Create wsgi file
 	```sudo nano productCatalog.wsgi```
 3. Add the following information to the wsgi file
-		```
+		```python
 		#!/usr/bin/python
 		import sys
 		import logging
