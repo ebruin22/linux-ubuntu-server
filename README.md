@@ -157,14 +157,14 @@ You may need to type Y to install updates during the installation process
 ```
 		su - grader
 		mkdir .ssh
-		touch .ssh/authorized_keys
-		vim .ssh/authorized_keys
+		sudo touch .ssh/authorized_keys
+		sudo vim .ssh/authorized_keys
 ```
 8. Paste the public key text copied during step 5 of this category and save the file
 9. Set permissions for the public key using the following commands:
 ```		
-		chmod 700 .ssh
-		chmod 644 .ssh/authorized_keys
+		sudo chmod 700 .ssh
+		sudo chmod 644 .ssh/authorized_keys
 ```
 10. Reload SSH to access server under new users by typing:
 ```
@@ -172,7 +172,7 @@ You may need to type Y to install updates during the installation process
 ```
 *** The new user will be able to log in using the following command (make sure to replace -->your_grader_key_filename<-- to your new user's key filename:
 ```
-		ssh grader@YOUR.IP.ADDRESS -i ~/.ssh/your_grader_key_filename -p 2200
+		ssh -i ~/.ssh/your_grader_key_filename grader@YOUR.IP.ADDRESS -p 2200
 ```
 
 ### Change Timezone To UTC ###
