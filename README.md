@@ -336,7 +336,8 @@ You may need to use command and make changes:
 				CustomLog ${APACHE_LOG_DIR}/access.log combined
 			</VirtualHost>
 ```
-	Save changes
+	
+***Save changes***
 3. Enable the virtual host 
 ```
 		sudo a2ensite YOUR_NEW_PROJECT_NAME
