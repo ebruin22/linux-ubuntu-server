@@ -65,8 +65,11 @@ You may need to type Y to install updates during the installation process
 5. Enable ufw firewall
 ```
 		sudo ufw enable
-		sudo ufw status```
+		sudo ufw status
+```
+
 ***Make sure firewall is active and ports enabled***
+
 6. Add port 2200 to your Amazon Lightsail instance, by going to the network tab and scrolling the firewall section. Add a new port by clicking "+ Add Another" choose "Custom" for application, TCP for protocol, and 2200 for port range and save changes.
 7. Before changing ssh port make sure to the firewall is open to ssh port using "sudo ufw status" otherwise you may not be able to log into your instance 
 8. Change the ssh port by typing the following commands:
@@ -78,7 +81,8 @@ You may need to type Y to install updates during the installation process
 ```		
 		sudo service ssh restart
 ```
-You will now need to log in using the command:
+
+- You will now need to log in using the command:
 ```
 		ssh ubuntu@YOUR.IP.ADDRESS -i ~/.ssh/your_key_filename -p 2200
 ```
@@ -115,7 +119,9 @@ You will now need to log in using the command:
 
 ### Create new user ###
 1. To create sudo (or super user access)  user and give sudo type the following command in the terminal:
-		```- sudo adduser grader```
+```
+		sudo adduser grader
+```
 2. To allow user sudo access, the user will need to be added to the sudoers.d file, to do so type the following commands:
 ```
 		vim /etc/sudoers
@@ -201,12 +207,12 @@ You will now need to log in using the command:
 		sudo cd cat /etc/postgresql/YOUR_VERSION_NUMBER/main.pg_hba.conf
 ```
 
-WARNING: You must replace YOUR_VARSION_NUMBER with your POSTGRESQL version number. You can check by running commands:
+***WARNING: You must replace YOUR_VARSION_NUMBER with your POSTGRESQL version number. You can check by running commands:***
 ```
 		cd /etc/postgresql/
 		ls -al
 ```
-	Note the folder with the number and use it in the command from step 2.
+***Note the folder with the number and use it in the command from step 2***
 
 3. Check in the output from step 2, that connections are only allowed from local host addresses 127.0.0.1 for IPv4 and ::1 for IPv6.
 You may need to use command and make changes:
@@ -261,6 +267,7 @@ You may need to use command and make changes:
 		sudo pip install flask-seasurf
 		sudo apt-get install git
 ```
+
 ### Clone and setup your catalog app ###
 1. Move to directory /var/www/ using
 ```
