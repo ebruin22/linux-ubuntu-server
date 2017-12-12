@@ -54,7 +54,7 @@ You may need to type Y to install updates during the installation process
 ```
 3. Enable all outgoing requests:
 ```
-sudo ufw default allow outgoing
+		sudo ufw default allow outgoing
 ```
 4. Allow ports needed by server
 ```		
@@ -65,9 +65,8 @@ sudo ufw default allow outgoing
 5. Enable ufw firewall
 ```
 		sudo ufw enable
-		sudo ufw status
-```
- 	Make sure firewall is active and ports enabled
+		sudo ufw status```
+***Make sure firewall is active and ports enabled***
 6. Add port 2200 to your Amazon Lightsail instance, by going to the network tab and scrolling the firewall section. Add a new port by clicking "+ Add Another" choose "Custom" for application, TCP for protocol, and 2200 for port range and save changes.
 7. Before changing ssh port make sure to the firewall is open to ssh port using "sudo ufw status" otherwise you may not be able to log into your instance 
 8. Change the ssh port by typing the following commands:
@@ -81,8 +80,10 @@ sudo ufw default allow outgoing
 ```
 You will now need to log in using the command:
 ```
-		ssh ubuntu@YOUR.IP.ADDRESS -i ~/.ssh/your_key_filename -p 2200```
-Warning: You will need to download your default key first before logging into the instance from your terminal. See Access Instance Via SSH
+		ssh ubuntu@YOUR.IP.ADDRESS -i ~/.ssh/your_key_filename -p 2200
+```
+
+***Warning: You will need to download your default key first before logging into the instance from your terminal. See Access Instance Via SSH***
 
 ### Launch Vagrant Virtual Machine ###
 1. Dowload and install VirtualBox
@@ -91,7 +92,8 @@ Warning: You will need to download your default key first before logging into th
 ```
   		vagrant init ubuntu/trusty64
  		vagrant up 
- ```
+```
+
 ### Access Instance Via SSH ###
 1. Download your default private key for your Amazon lightsail instance
 2. Open a new terminal window to create .ssh folder in your local home directory (not Vagrant) using command:
