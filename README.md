@@ -7,22 +7,22 @@ Please visit http://18.216.230.178 for the website deployed using the steps outl
 This server uses ssh port 2200.
 
 ## Overview of Tasks ##
--[ ] Start a new Ubuntu Linux server instance in Amazon Lightsail
--[ ] Launch your new instance using the <connect using SSH> button
--[ ] Secure server by updating packages
--[ ] Configure UFW firewall and change SSH port from 22 to 2200
--[ ] Install VirtualBox and Vagrant in local machine (if not installed yet)
--[ ] Access instance via ssh in your virtual machine
--[ ] Create new user named grader and give user sudo access
--[ ] Create security key for user grader
--[ ] Change local timezone to UTC
--[ ] Install and configure Apache2 to serve python app
--[ ] Install and configure PostgreSQL 
--[ ] Create PostgreSQL user and empty database
--[ ] Install packages needed for your catalog app (see the imports in your python files)
--[ ] Clone and setup your catalog app
--[ ] Configure and enable a virtual host for the catalog app
--[ ] Create the .wsgi file
+- [ ] Start a new Ubuntu Linux server instance in Amazon Lightsail
+- [ ] Launch your new instance using the <connect using SSH> button
+- [ ] Secure server by updating packages
+- [ ] Configure UFW firewall and change SSH port from 22 to 2200
+- [ ] Install VirtualBox and Vagrant in local machine (if not installed yet)
+- [ ] Access instance via ssh in your virtual machine
+- [ ] Create new user named grader and give user sudo access
+- [ ] Create security key for user grader
+- [ ] Change local timezone to UTC
+- [ ] Install and configure Apache2 to serve python app
+- [ ] Install and configure PostgreSQL 
+- [ ] Create PostgreSQL user and empty database
+- [ ] Install packages needed for your catalog app (see the imports in your python files)
+- [ ] Clone and setup your catalog app
+- [ ] Configure and enable a virtual host for the catalog app
+- [ ] Create the .wsgi file
 
  Your're Done! 
 
@@ -72,9 +72,8 @@ Warning: You will need to download your default key first before logging into th
 1. Dowload and install VirtualBox
 2. Download and install Vagrant
 3. Once both are installed, run the virtual machine with the following commands:
- 		```vagrant init ubuntu/trusty64 
- 		vagrant up 
- 		```
+ 		```vagrant init ubuntu/trusty64```
+ 		```vagrant up ```
 ### Access Instance Via SSH ###
 1. Download your default private key for your Amazon lightsail instance
 2. Open a new terminal window to create .ssh folder in your local home directory (not Vagrant) using command:
@@ -83,8 +82,8 @@ Warning: You will need to download your default key first before logging into th
 		```mv ~/Downloads/your_key_filename ~/.ssh/```
 4. Set permissions by entering the following command
 		```chmod 600 ~/.ssh/your_key_filename```
-5. Access your instance via ssh with the following command
-		```ssh ubuntu@YOUR.IP.ADDRESS -i ~/.ssh/your_key_filename -p 2200```
+5. Access your instance via ssh with the following command: 
+```ssh ubuntu@YOUR.IP.ADDRESS -i ~/.ssh/your_key_filename -p 2200```
 
 ### Create new user ###
 1. To create sudo (or super user access)  user and give sudo type the following command in the terminal:
@@ -95,7 +94,7 @@ Warning: You will need to download your default key first before logging into th
 		touch /etc/sudoers.d/grader
 		vim /etc/sudoers.d/grader
 ```
-3. type the following inside the file and save the file
+3. Type the following inside the editor for sudoers.d/grader and save the file
 ```grader ALL=(ALL:ALL) ALL```
 
 ### Create SSH Key For New User ###
@@ -108,8 +107,8 @@ Warning: You will need to download your default key first before logging into th
 		```cat .ssh/your_key_filename```
 5. Copy the text in the output as this is the public key
 6. In your virtual machine, create directory to store public keys using the following:
-		```mkdir .ssh
-		touch .ssh/authorized_keys
+		```mkdir .ssh```
+		```touch .ssh/authorized_keys
 		```
 7. To deploy the public key for the new user, enter the following commands in your virtual machine:
 		```su - grader
@@ -180,13 +179,13 @@ You may need to use command and make changes:
 
 ### Install Packages Needed By Python App ###
 1. Install python, psycopg2, flask, sqlalchemy, pip, oauth2client, requests, httplib2, seasurf, git using the following commands
-		```sudo apt-get install python-psycopg2 python-flask
-		sudo apt-get install python-sqlalchemy python-pip
-		sudo pip install oauth2client
-		sudo pip install requests
-		sudo pip install httplib2
-		sudo pip install flask-seasurf
-		sudo apt-get install git
+		```sudo apt-get install python-psycopg2 python-flask```
+		```sudo apt-get install python-sqlalchemy python-pip```
+		```sudo pip install oauth2client```
+		```sudo pip install requests```
+		```sudo pip install httplib2```
+		```sudo pip install flask-seasurf```
+		```sudo apt-get install git
 		```
 ### Clone and setup your catalog app ###
 1. Move to directory /var/www/ using
@@ -217,7 +216,7 @@ You may need to use command and make changes:
 		```sudo nano /etc/apache2/sites-available/YOUR_NEW_PROJECT_NAME.conf```
 	Replace YOUR_NEW_PROJECT_NAME with the name of your project name in step 5 from "Clone and setup your catalog app"
 2. Change the bold text of YOUR_NEW_PROJECT_NAME.conf file
-			 ```python
+```
 			 <VirtualHost *:80>
 			 	ServerName ***YOUR_AMAZON_AMAZON_LIGHTSAIL_IP***
 				ServerAdmin admin@***YOUR_AMAZON_AMAZON_LIGHTSAIL_IP***
@@ -235,7 +234,7 @@ You may need to use command and make changes:
 				LogLevel warn
 				CustomLog ${APACHE_LOG_DIR}/access.log combined
 			</VirtualHost>
-			```
+```
 	Save changes
 3. Enable the virtual host 
 		```sudo a2ensite YOUR_NEW_PROJECT_NAME```
@@ -247,7 +246,7 @@ You may need to use command and make changes:
 2. Create wsgi file
 	```sudo nano productCatalog.wsgi```
 3. Add the following information to the wsgi file
-		```python
+```
 		#!/usr/bin/python
 		import sys
 		import logging
@@ -255,7 +254,7 @@ You may need to use command and make changes:
 		sys.path.insert(0,"/var/www/productCatalog/")
 		from productCatalog import app as application
 		application.secret_key = 'Add your secret key'
-		```
+```
 
 4. Restart apache
 ```sudo service apache2 restart```
